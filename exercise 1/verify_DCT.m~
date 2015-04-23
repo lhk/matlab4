@@ -1,0 +1,5 @@
+clc
+N=10;
+F=randn(N,N);
+x=linspace(pi/(2*N),pi-pi/(2*N),N);
+
