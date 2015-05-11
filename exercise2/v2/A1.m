@@ -20,7 +20,7 @@ function A1()
     [ spA, f ] = discretize_pde( n, 1e-4, 1, 5*pi/6, @(x,y) 1, @(x,y) 0, true );
     soln = spA\f;
     figure(3);
-    plot_solution(1e-40*soln,n,[.7-0.05,.05,.3,.8]);
+    plot_solution(soln,n,[.7-0.05,.05,.3,.8]);
 
 
 end
