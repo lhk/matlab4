@@ -11,14 +11,23 @@ function [  ] = A2a(  )
 
     N = nP;
     N2 = N*N;
+    Nt=100;
     dx = 1/(N+1);
-    dt = 0.5;
+    dt = 0.05;
     A=(1/dx^2)*spdiags( repmat([1 -2 1],N,1),[-1 0 1],N,N);
     I = speye(N,N);
     A2 = kron(A,I)+kron(I,A);
     
-    U = ImplicitTrapez( N2,10,A2,u0,dt );
     
+    U = ImplicitTrapez( N2,Nt,A2,u0,dt );
+    
+    surf(U)
+    
+%     for t=1:Nt
+%         x = reshape(U(:,t),N,N);
+%         contour(x,1:15:255);
+%         pause(0.1);
+%     end
 
 
 end
