@@ -1,0 +1,25 @@
+function [  ] = A2a(  )
+
+    
+    load penny;
+    P=flipud(P);
+    P=imresize(P,0.2);
+    [nP,mP]=size(P)
+    assert(nP==mP);
+    u0=reshape(P,nP*mP,1);
+    
+
+    N = nP+1;
+    N2 = N*N;
+    dx = 1/N;
+    dt = 0.5;
+    A=(1/dx^2)*spdiags( repmat([1 -2 1],N-1,1),[-1 0 1],N-1,N-1);
+    I = speye(N-1,N-1);
+    A2 = kron(A,I)+kron(I,A);
+    
+    U = ImplicitTrapez( N,10,A,u0,dt );
+    
+
+
+end
+
