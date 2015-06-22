@@ -3,7 +3,7 @@ function [  ] = A2a(  )
     
     load penny;
     P=flipud(P);
-    %P=imresize(P,0.8);
+    P=imresize(P,0.4);
     [nP,mP]=size(P);
     assert(nP==mP);
     u0=reshape(P,nP*mP,1);
@@ -11,7 +11,7 @@ function [  ] = A2a(  )
 
     N = nP;
     N2 = N*N;
-    Nt=80;
+    Nt=40;
     dx = 1/(N+1);
     dt = 1e-5;
     A=(1/dx^2)*spdiags( repmat([1 -2 1],N,1),[-1 0 1],N,N);
@@ -19,7 +19,9 @@ function [  ] = A2a(  )
     A2 = kron(A,I)+kron(I,A);
     
     
-    U = ImplicitEuler( N2,Nt,A2,u0,dt )';    
+    
+    
+    U = ImplicitTrapez( N2,Nt,A2,u0,dt )';    
     %[T,U] = ode15s(@(t,x) A2*x, linspace(0,dt*Nt,Nt+1), u0);
     
     

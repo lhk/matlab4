@@ -10,4 +10,3 @@ function [ u ] = ImplicitTrapez( N,Nt,A,u0,dt )
     end
     
 end
-

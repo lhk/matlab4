@@ -11,7 +11,7 @@ function [  ] = A1(  )
     x = linspace(dx, dx*N,N);
     u0 = sin(pi*x);
     
-    u=ImplicitEuler(N,Nt,A,u0,dt);
+    u=ImplicitTrapez(N,Nt,A,u0,dt);
     
     surf2(u);
 
