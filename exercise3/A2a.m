@@ -3,7 +3,7 @@ function [  ] = A2a(  )
     
     load penny;
     P=flipud(P);
-    P=imresize(P,0.4);
+    P=imresize(P,0.6);
     [nP,mP]=size(P);
     assert(nP==mP);
     u0=reshape(P,nP*mP,1);
@@ -21,7 +21,7 @@ function [  ] = A2a(  )
     
     
     
-    U = ImplicitTrapez( N2,Nt,A2,u0,dt )';    
+    U = ImplicitTrapez( N2,Nt,A2,zeros(N2,1),u0,dt )';    
     %[T,U] = ode15s(@(t,x) A2*x, linspace(0,dt*Nt,Nt+1), u0);
     
     

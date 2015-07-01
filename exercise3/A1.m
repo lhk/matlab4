@@ -1,4 +1,4 @@
-function [  ] = A1(  )
+function [ u ] = A1(  )
 
     N = 60;
     dx = 1/(N+1);
@@ -11,7 +11,7 @@ function [  ] = A1(  )
     x = linspace(dx, dx*N,N);
     u0 = sin(pi*x);
     
-    u=ImplicitTrapez(N,Nt,A,u0,dt);
+    u=ImplicitEuler(N,Nt,A,zeros(N,1),u0,dt);
     
     surf2(u);
 

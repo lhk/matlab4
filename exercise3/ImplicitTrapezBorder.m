@@ -10,8 +10,6 @@ function [ u ] = ImplicitTrapezBorder( N,Nt,A,u0,dt )
     u0_shaped=reshape(u0,N_s,N_s);
     
     for i=2:Nt
-        u(1,i-1)
-        u0(1)
         u(:,i) = TrapzMatrix\(u(:,i-1) + (dt/2)*(A*u(:,i-1)));
         
         
